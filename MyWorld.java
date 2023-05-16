@@ -17,9 +17,9 @@ public class MyWorld extends World
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 400, 1);
+        super(600, 400, 1, false);
         scoreboard = new Label(points,80);
-        addObject(scoreboard, 50, 50);
+        addObject(scoreboard, 300, 50);
         setAppleSpawn();
         Elephant elephant = new Elephant();
         addObject(elephant, 0, 200);
@@ -29,6 +29,11 @@ public class MyWorld extends World
     {
         points++;
         scoreboard.setValue(points);
+    }
+    public void gameOver()
+    {
+        Label endGame = new Label("Game Over", 100);
+        addObject(endGame, 300,200);
     }
     public void setAppleSpawn()
     {

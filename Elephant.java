@@ -12,6 +12,43 @@ public class Elephant extends Actor
      * Act - do whatever the Elephant wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    GreenfootSound elephantSound = new GreenfootSound("elephantcub.mp3");
+    GreenfootImage rightIdle[] = new GreenfootImage[8];
+    GreenfootImage leftIdle[] = new GreenfootImage[8];
+    String facing = "right";
+    
+    public Elephant()
+    {
+        for(int i = 0; i<rightIdle.length; i++)
+        {
+            rightIdle[i] = new GreenfootImage("images/elephant_idle/idle" + i + ".png");
+            rightIdle[i].scale(100,100);
+        }
+        
+        for(int i =0; i<leftIdle.length; i++)
+        {
+            leftIdle[i] = new GreenfootImage("images/elephant_idle/idle" + i + ".png");
+            leftIdle[i] = leftIdle[i].mirrorHorizontally();
+            leftIdle[i].scale(100,100);
+        }
+        setImage(rightIdle[0]);
+    }
+    
+    int index = 0;
+    public void animatedElephant()
+    {
+        if(facing.equals("right"))
+        {
+            setImage(rightIdle[index]);
+            index = (index + 1) % rightIdle.length;
+        }
+        else
+        {
+            setImage(leftIdle[index]);
+            index = (index + 1) % leftIdle.length;
+        }
+        
+    }
     public void act()
     {
         // Add your action code here.
@@ -35,6 +72,7 @@ public class Elephant extends Actor
             move(1);
         }
         eat();
+        animatedElephant();
     }
     public void eat()
     {
@@ -42,6 +80,7 @@ public class Elephant extends Actor
         {
             removeTouching(Apple.class);
             MyWorld world = (MyWorld)getWorld();
+            elephantSound.play();
             world.setAppleSpawn();
             world.score();
         }

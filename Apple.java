@@ -15,11 +15,13 @@ public class Apple extends Actor
     public void act()
     {
         int x = getX();
-        int y = getY()+1;
-        setLocation(x, y);
+        int speed = Greenfoot.getRandomNumber(5);
+
         MyWorld world = (MyWorld) getWorld();
         if(getY() >= world.getHeight())
         {
+            int y = getY()+speed;
+            setLocation(x, y);
             world.gameOver();
             world.removeObject(this);            
         }

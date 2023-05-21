@@ -22,7 +22,7 @@ public class MyWorld extends World
         addObject(scoreboard, 300, 50);
         setAppleSpawn();
         Elephant elephant = new Elephant();
-        addObject(elephant, 0, 200);
+        addObject(elephant, 0, 350);
         
     }
     public void score()

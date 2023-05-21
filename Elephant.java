@@ -28,7 +28,7 @@ public class Elephant extends Actor
         for(int i =0; i<leftIdle.length; i++)
         {
             leftIdle[i] = new GreenfootImage("images/elephant_idle/idle" + i + ".png");
-            leftIdle[i] = leftIdle[i].mirrorHorizontally();
+            rightIdle[i].mirrorHorizontally();
             leftIdle[i].scale(100,100);
         }
         setImage(rightIdle[0]);
@@ -54,23 +54,15 @@ public class Elephant extends Actor
         // Add your action code here.
         if(Greenfoot.isKeyDown("left"))
         {
-            move(-1);
+            move(-5);
+            facing = "right";
         }
         else if(Greenfoot.isKeyDown("right"))
         {
-            move(2);
-            
+            move(5);
+            facing = "left";
         }
-        else if(Greenfoot.isKeyDown("down"))
-        {
-            turn(270);
-            move(1);
-        }
-        else if(Greenfoot.isKeyDown("up"))
-        {
-            turn(90);
-            move(1);
-        }
+
         eat();
         animatedElephant();
     }

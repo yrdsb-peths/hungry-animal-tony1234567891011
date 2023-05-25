@@ -8,18 +8,27 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Apple extends Actor
 {
-    double startingSpeed = 1.0;
-    double increasingSpeed = 0.4;
+    int speed = Greenfoot.getRandomNumber(10);
+    double increasingSpeed = 0.0;
     /**
      * Act - do whatever the Apple wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act()
     {
+        while(speed == 0)
+        {
+            speed = speed + Greenfoot.getRandomNumber(10); 
+            // makes sure speed is not zer
+        }
         int x = getX();
-        int y = getY()+ (int)startingSpeed;
+        int y = getY() + speed;
+        if(increasingSpeed <= 1.0)
+        {
+            increasingSpeed += 0.05;
+        }
+        speed = speed + (int)increasingSpeed;
         setLocation(x, y);
-        startingSpeed += increasingSpeed;
         MyWorld world = (MyWorld) getWorld();
         if(getY() >= world.getHeight())
         {

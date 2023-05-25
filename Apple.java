@@ -8,7 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Apple extends Actor
 {
-    int speed = Greenfoot.getRandomNumber(10);
+    int speed = Greenfoot.getRandomNumber(15);
+    int speedInitial = 0;
     double increasingSpeed = 0.0;
     /**
      * Act - do whatever the Apple wants to do. This method is called whenever
@@ -19,10 +20,10 @@ public class Apple extends Actor
         while(speed == 0)
         {
             speed = speed + Greenfoot.getRandomNumber(10); 
-            // makes sure speed is not zer
+            // makes sure speed is not zero
         }
         int x = getX();
-        int y = getY() + speed;
+        int y = getY() + (speed + speedInitial);
         if(increasingSpeed <= 1.0)
         {
             increasingSpeed += 0.05;
@@ -37,5 +38,9 @@ public class Apple extends Actor
         }
         
         
+    }
+    public void setSpeed(int spd)
+    {
+        speedInitial = spd;
     }
 }

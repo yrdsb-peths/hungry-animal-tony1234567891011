@@ -12,3 +12,8 @@ This particular repository is the starting template for the Hungry Elephant tuto
 [Part 2: Game Enhancements](https://youtu.be/TwID9i0Ey6o)
 
 [Part 3: Final Touches](https://youtu.be/GT-eFwa4Abc)
+
+##Features:
+- Added an object that decreases score
+- Increases speed the higher the score is.
+- Random speeds, however cannot go below the minimum speed which comes from score

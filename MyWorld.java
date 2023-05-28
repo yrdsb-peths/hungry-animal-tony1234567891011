@@ -22,6 +22,7 @@ public class MyWorld extends World
         scoreboard = new Label(points,80);
         addObject(scoreboard, 300, 50);
         setAppleSpawn();
+        setBananaSpawn();
         Elephant elephant = new Elephant();
         addObject(elephant, 300, 350);
         
@@ -34,6 +35,19 @@ public class MyWorld extends World
         {
             level = (level + 3);
         }
+    }
+    public void decreaseScore()
+    {
+        points = points - 1;
+        scoreboard.setValue(points);
+    }
+    public void setBananaSpawn()
+    {
+        int x = Greenfoot.getRandomNumber(600);
+        int y = 0;
+        
+        Banana b = new Banana();
+        addObject(b,x,y);
     }
     public void gameOver()
     {
